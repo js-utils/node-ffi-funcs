@@ -9,14 +9,14 @@ describe('CWnd TEST', function () {
       let windowTitle = CWnd.GetWindowText(hWnd)
       console.log(`window className: ${className}, title: ${windowTitle}`)
       if (windowTitle.match('风驰万里1')) {
-        console.log('real find window')
+        console.log('real find chat window', 'visible:', CWnd.IsWindowVisible(hWnd))
         let textWnd = CWnd.C_FindWindow(hWnd, null, 'RichEditComponent', null)
         if (textWnd) {
           console.log('real find RichEditComponent')
           // 输入框设置文本
-          //CWnd.SendMessage(textWnd, CWnd.Message.WM_SETTEXT, null, '好了')
+          CWnd.SendMessage(textWnd, CWnd.Message.WM_SETTEXT, null, '好了3')
           // 回车发送消息
-          //CWnd.SendMessage(textWnd, CWnd.Message.WM_KEYDOWN, CWnd.Message.VK_RETURN, null)
+          CWnd.SendMessage(textWnd, CWnd.Message.WM_KEYDOWN, CWnd.Message.VK_RETURN, null)
         }
         // 获取输入框的文字
         // if (textWnd) {
