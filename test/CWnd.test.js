@@ -14,9 +14,17 @@ describe('CWnd TEST', function () {
         let textWnd = CWnd.C_FindWindow(hWnd, null, 'RichEditComponent', null)
         if (textWnd) {
           console.log('real find RichEditComponent')
-          CWnd.SendMessage(textWnd, CWnd.Message.WM_SETTEXT, null, '好了')
-          CWnd.SendMessage(textWnd, CWnd.Message.WM_KEYDOWN, CWnd.Message.VK_RETURN, null)
+          // 输入框设置文本
+          //CWnd.SendMessage(textWnd, CWnd.Message.WM_SETTEXT, null, '好了')
+          // 回车发送消息
+          //CWnd.SendMessage(textWnd, CWnd.Message.WM_KEYDOWN, CWnd.Message.VK_RETURN, null)
         }
+        // 获取输入框的文字
+        // if (textWnd) {
+        //   let buf = Buffer.alloc(255)
+        //   CWnd.SendMessage(textWnd, CWnd.Message.WM_GETTEXT, buf.byteLength, buf)
+        //   console.log('text: ', buf.toString('ucs2').replace(/\\0+$/g, ''))
+        // }
         break
       } else {
         hWnd = CWnd.FindWindowEx(null, hWnd, className, null)
