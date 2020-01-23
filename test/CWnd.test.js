@@ -1,6 +1,5 @@
 const expect = require('chai').expect
 const CWnd = require('../lib/CWnd')
-const { CString } = require('../lib/Helper')
 describe('CWnd TEST', function () {
   it('static FindWindow', async function() {
     let className = 'StandardFrame'
