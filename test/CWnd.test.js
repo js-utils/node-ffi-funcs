@@ -10,6 +10,7 @@ describe('CWnd TEST', function () {
       console.log(`window className: ${className}, title: ${windowTitle}`)
       if (windowTitle.match('风驰万里1')) {
         console.log('real find chat window', 'visible:', CWnd.IsWindowVisible(hWnd))
+        console.log('active window: ', CWnd.SetForegroundWindow(hWnd))
         let textWnd = CWnd.C_FindWindow(hWnd, null, 'RichEditComponent', null)
         if (textWnd) {
           console.log('real find RichEditComponent')
