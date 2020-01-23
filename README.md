@@ -7,3 +7,5 @@
 * CWnd.GetWindowText (hWnd)
 * CWnd.SendMessage(hWnd, Msg, wParam, lParam)
 * CWnd.C_FindWindow(hParent = null, hChild = null, shouldClassNameReg = null, shouldWindowNameReg = null)
+* CWnd.C_FindSiblingPreviousWindow(hWnd, shouldClassNameReg = null, shouldWindowNameReg = null)
+* CWnd.C_FindSiblingNextWindow (hWnd, className = null, windowName = null)
