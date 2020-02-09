@@ -42,6 +42,20 @@ describe('CWnd TEST', function () {
 
     expect(hWnd.address() === parentHWnd.address()).to.be.ok
   })
+  // GetParent
+  it('static GetWindow', async function() {
+    let hWnd = CWnd.FindWindow("Shell_TrayWnd", null)
+
+    let startHWnd = CWnd.FindWindowEx(hWnd, null, 'Start', null)
+    // 获取窗口的第一个窗口
+    let startHWnd2 = CWnd.GetWindow(hWnd, CWnd.MACRO.GW_CHILD)
+    // 前一个被激活的窗口
+    let preHWnd = CWnd.GetWindow(hWnd, CWnd.MACRO.GW_HWNDPREV)
+    // 后一个被激活的窗口
+    let hWnd2 = CWnd.GetWindow(preHWnd, CWnd.MACRO.GW_HWNDNEXT)
+    expect(startHWnd.address() === startHWnd2.address()).to.be.ok
+    expect(hWnd.address() === hWnd2.address()).to.be.ok
+  })
   // GetClassName
   it('static GetClassName', async function() {
     let hWnd = CWnd.FindWindow("Shell_TrayWnd", null)
@@ -57,9 +71,9 @@ describe('CWnd TEST', function () {
   // // SendMessage
   // it('static SendMessage', async function() {
   //   // 输入框设置文本
-  //   // CWnd.SendMessage(textWnd, CWnd.Message.WM_SETTEXT, null, '好了3')
+  //   // CWnd.SendMessage(textWnd, CWnd.MACRO.WM_SETTEXT, null, '好了3')
   //   // 回车发送消息
-  //   // CWnd.SendMessage(textWnd, CWnd.Message.WM_KEYDOWN, CWnd.Message.VK_RETURN, null)
+  //   // CWnd.SendMessage(textWnd, CWnd.MACRO.WM_KEYDOWN, CWnd.Message.VK_RETURN, null)
   // })
   // C_FindWindow
   it('static C_FindWindow', async function() {
@@ -67,15 +81,36 @@ describe('CWnd TEST', function () {
     let parentClassName = CWnd.GetClassName(CWnd.GetParent(hWnd))
     expect(parentClassName === "Shell_TrayWnd").to.be.ok
   })
-  // C_FindSiblingPreviousWindow C_FindSiblingNextWindow
-  it('static C_FindSiblingPreviousWindow/C_FindSiblingNextWindow', async function() {
+
+  // C_GetWindowFirstSibling C_GetWindowPreviousSibling C_GetWindowNextSibling C_GetWindowLastSibling
+  it('static GetWindow/C_FindWindowSiblingPrevious/C_FindWindowSiblingNext', async function() {
+    let hWnd = CWnd.FindWindow("Shell_TrayWnd", null)
+    let startHWnd = CWnd.C_FindWindow(hWnd, null, "Start", null)
+    let nextHWND = CWnd.C_FindWindow(hWnd, startHWnd)
+
+    let firstChild = CWnd.C_GetWindowFirstChild(hWnd)
+    let firstSibling = CWnd.C_GetWindowFirstSibling(nextHWND)
+    let nextSibling = CWnd.C_GetWindowNextSibling(startHWnd)
+    let preSibling = CWnd.C_GetWindowPreviousSibling(nextHWND)
+    let lastSibling = CWnd.C_GetWindowLastSibling(startHWnd)
+
+    expect(startHWnd.address() === firstChild.address()).to.be.ok
+    expect(startHWnd.address() === firstSibling.address()).to.be.ok
+    expect(startHWnd.address() === preSibling.address()).to.be.ok
+    expect(nextHWND.address() === nextSibling.address()).to.be.ok
+    expect(nextHWND.address() === nextSibling.address()).to.be.ok
+    expect(!CWnd.C_FindWindow(hWnd, lastSibling)).to.be.ok
+  })
+
+  // C_FindWindowSiblingPrevious C_FindWindowSiblingNext
+  it('static C_FindWindowSiblingPrevious/C_FindWindowSiblingNext', async function() {
     let hWnd = CWnd.FindWindow("Shell_TrayWnd", null)
     let startHWnd = CWnd.C_FindWindow(hWnd, null, "Start", null)
     CWnd.SetWindowText(startHWnd, "CustomStart")
     let nextHWnd = CWnd.C_FindWindow(hWnd, startHWnd, null, null)
     CWnd.SetWindowText(nextHWnd, "CustomNext")
-    let startHWnd2 = CWnd.C_FindSiblingPreviousWindow(nextHWnd)
-    let nextHWnd2 = CWnd.C_FindSiblingNextWindow(startHWnd)
+    let startHWnd2 = CWnd.C_FindWindowSiblingPrevious(nextHWnd)
+    let nextHWnd2 = CWnd.C_FindWindowSiblingNext(startHWnd)
     expect(startHWnd.address() === startHWnd2.address()).to.be.ok
     expect(nextHWnd.address() === nextHWnd2.address()).to.be.ok
   })
@@ -100,14 +135,14 @@ describe('CWnd TEST', function () {
   //       if (textWnd) {
   //         // let buttonParentHWnd = CWnd.GetParent(CWnd.GetParent(CWnd.GetParent(textWnd)))
   //         // console.log('real find RichEditComponent', textWnd)
-  //         // let afterChildHWND = CWnd.C_FindSiblingNextWindow(CWnd.FindWindowEx(buttonParentHWnd, null))
+  //         // let afterChildHWND = CWnd.C_FindWindowSiblingNext(CWnd.FindWindowEx(buttonParentHWnd, null))
   //         // let buttonHWND = CWnd.C_FindWindow(buttonParentHWnd, afterChildHWND, "EditComponent")
   //         // console.log(1, buttonHWND, CWnd.GetDlgItemText(buttonHWND))
   //         ////////////////
   //         // 输入框设置文本
-  //         // CWnd.SendMessage(textWnd, CWnd.Message.WM_SETTEXT, null, '好了3')
+  //         // CWnd.SendMessage(textWnd, CWnd.MACRO.WM_SETTEXT, null, '好了3')
   //         // 回车发送消息
-  //         // CWnd.SendMessage(textWnd, CWnd.Message.WM_KEYDOWN, CWnd.Message.VK_RETURN, null)
+  //         // CWnd.SendMessage(textWnd, CWnd.MACRO.WM_KEYDOWN, CWnd.Message.VK_RETURN, null)
   //       }
   //       // 获取输入框的文字
   //       // if (textWnd) {
