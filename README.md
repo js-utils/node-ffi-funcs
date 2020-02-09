@@ -1,4 +1,8 @@
+### 说明
+`ffi`不支持`nodejs10`及以上的版本，故本项目使用替代模块`ffi-napi`
+
 ### 实现的函数（Implemented function）
+* CWnd.GetDesktopWindow() // 获取桌面句柄
 * CWnd.FindWindow (className = null, windowName = null) // 查找窗口
 * CWnd.FindWindowEx (hParent = null, hChild = null, className = null, windowName = null) // 查找窗口高级
 * CWnd.IsWindowVisible (hWnd) // 当前窗口是否可见

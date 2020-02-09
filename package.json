@@ -15,6 +15,6 @@
     "mocha": "^7.0.0"
   },
   "dependencies": {
-    "ffi": "^2.3.0"
+    "ffi-napi": "^2.4.6"
   }
 }

@@ -1,6 +1,11 @@
 const expect = require('chai').expect
 const CWnd = require('../lib/CWnd')
 describe('CWnd TEST', function () {
+  // GetDesktopWindow 获取桌面下的窗口
+  it('static GetDesktopWindow', async function() {
+    let hWnd = CWnd.GetDesktopWindow()
+    expect(!!hWnd).to.be.ok
+  })
   // FindWindow 获取桌面下的窗口
   it('static FindWindow', async function() {
     let hWnd = CWnd.FindWindow(null, null)
