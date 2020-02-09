@@ -49,11 +49,13 @@ describe('CWnd TEST', function () {
     let winName = CWnd.GetWindowText(hWnd)
     expect(winName === "CustomTrapName").to.be.ok
   })
-  // SendMessage
-  it('static SendMessage', async function() {
-    // 输入框设置文本
-    // CWnd.SendMessage(textWnd, CWnd.Message.WM_SETTEXT, null, '好了3')
-  })
+  // // SendMessage
+  // it('static SendMessage', async function() {
+  //   // 输入框设置文本
+  //   // CWnd.SendMessage(textWnd, CWnd.Message.WM_SETTEXT, null, '好了3')
+  //   // 回车发送消息
+  //   // CWnd.SendMessage(textWnd, CWnd.Message.WM_KEYDOWN, CWnd.Message.VK_RETURN, null)
+  // })
   // C_FindWindow
   it('static C_FindWindow', async function() {
     let hWnd = CWnd.C_FindWindow(null, null, "Start", null)
@@ -72,6 +74,12 @@ describe('CWnd TEST', function () {
     expect(startHWnd.address() === startHWnd2.address()).to.be.ok
     expect(nextHWnd.address() === nextHWnd2.address()).to.be.ok
   })
+  // GetWindowRect
+  it('static GetWindowRect', async function() {
+    let hWnd = CWnd.FindWindow("Shell_TrayWnd", null)
+    let rect = CWnd.GetWindowRect(hWnd)
+    expect(!!rect).to.be.ok
+  })
   // // FIXME: CUSTOM TEST
   // it('static FindWindow', async function() {
   //   let className = 'StandardFrame'
@@ -85,11 +93,16 @@ describe('CWnd TEST', function () {
   //       console.log('active window: ', CWnd.SetForegroundWindow(hWnd))
   //       let textWnd = CWnd.C_FindWindow(hWnd, null, 'RichEditComponent', null)
   //       if (textWnd) {
-  //         console.log('real find RichEditComponent')
+  //         // let buttonParentHWnd = CWnd.GetParent(CWnd.GetParent(CWnd.GetParent(textWnd)))
+  //         // console.log('real find RichEditComponent', textWnd)
+  //         // let afterChildHWND = CWnd.C_FindSiblingNextWindow(CWnd.FindWindowEx(buttonParentHWnd, null))
+  //         // let buttonHWND = CWnd.C_FindWindow(buttonParentHWnd, afterChildHWND, "EditComponent")
+  //         // console.log(1, buttonHWND, CWnd.GetDlgItemText(buttonHWND))
+  //         ////////////////
   //         // 输入框设置文本
-  //         CWnd.SendMessage(textWnd, CWnd.Message.WM_SETTEXT, null, '好了3')
+  //         // CWnd.SendMessage(textWnd, CWnd.Message.WM_SETTEXT, null, '好了3')
   //         // 回车发送消息
-  //         CWnd.SendMessage(textWnd, CWnd.Message.WM_KEYDOWN, CWnd.Message.VK_RETURN, null)
+  //         // CWnd.SendMessage(textWnd, CWnd.Message.WM_KEYDOWN, CWnd.Message.VK_RETURN, null)
   //       }
   //       // 获取输入框的文字
   //       // if (textWnd) {
