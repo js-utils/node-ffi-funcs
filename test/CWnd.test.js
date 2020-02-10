@@ -120,6 +120,14 @@ describe('CWnd TEST', function () {
     let rect = CWnd.GetWindowRect(hWnd)
     expect(!!rect).to.be.ok
   })
+  // C_HWndToBmpFile
+  it('static C_HWndToBmpFile', async function() {
+    let hWnd = CWnd.FindWindow("Shell_TrayWnd", null)
+    let startHWnd = CWnd.C_FindWindow(hWnd, null, "Start", null)
+    let bmpImgPath = CWnd.C_HWndToBmpFile(startHWnd)
+    console.log(bmpImgPath)
+    expect(!!bmpImgPath).to.be.ok
+  })
   // // FIXME: CUSTOM TEST
   // it('static FindWindow', async function() {
   //   let className = 'StandardFrame'
