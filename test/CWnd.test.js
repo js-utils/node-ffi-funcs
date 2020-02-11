@@ -28,11 +28,11 @@ describe('CWnd TEST', function () {
     expect(isWindowVisible).to.be.ok
   })
   // SetForegroundWindow
-  it('static SetForegroundWindow', async function() {
-    let hWnd = CWnd.FindWindow("Shell_TrayWnd", null)
-    let isSetForeground = CWnd.SetForegroundWindow(hWnd)
-    expect(isSetForeground).to.be.ok
-  })
+  // it('static SetForegroundWindow', async function() {
+  //   let hWnd = CWnd.FindWindow("Shell_TrayWnd", null)
+  //   let isSetForeground = CWnd.SetForegroundWindow(hWnd)
+  //   expect(isSetForeground).to.be.ok
+  // })
   // GetParent
   it('static GetParent', async function() {
     let hWnd = CWnd.FindWindow("Shell_TrayWnd", null)

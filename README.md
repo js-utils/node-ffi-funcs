@@ -26,7 +26,7 @@
 * CWnd.C_FindWindow(hParent = null, hChild = null, shouldClassNameReg = null, shouldWindowNameReg = null) // 查找某个窗口 - 包括子孙
 * CWnd.C_FindSiblingPreviousWindow(hWnd, shouldClassNameReg = null, shouldWindowNameReg = null) // 上一个兄弟节点  可根据要查找的类名或标题 查找最近的一个
 * CWnd.C_FindSiblingNextWindow (hWnd, className = null, windowName = null) // 下一个兄弟节点  可根据要查找的类名或标题 查找最近的一个
-* C_HWndToBmpFile(hWnd) // 讲窗口句柄转为bmp图片路径
+* C_HWndToBmpFile(hWnd) // 将窗口句柄转为bmp图片路径
 ### 其他（others）
 
 > 屏幕截图（screenshot）
