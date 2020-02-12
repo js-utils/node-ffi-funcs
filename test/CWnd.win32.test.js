@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-const CWnd = require('../lib/CWnd')
+const { CWnd } = require('../lib/')
 describe('CWnd TEST', function () {
   // GetDesktopWindow 获取桌面下的窗口
   it('static GetDesktopWindow', async function() {

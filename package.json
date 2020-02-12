@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test mocha \"test/**/*.@(test.js)\" --timeout 9000 --slow 10"
+    "test": "cross-env NODE_ENV=test mocha \"test/**/*.@(win32.test.js)\" --timeout 9000 --slow 10",
+    "testDarwin": "cross-env NODE_ENV=test mocha \"test/**/*.@(darwin.test.js)\" --timeout 9000 --slow 10"
   },
   "keywords": [],
   "author": "",

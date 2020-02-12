@@ -10,7 +10,7 @@
 * CWnd.GetParent (hWnd) // 返回给定子窗口的父窗口
 * CWnd.GetWindow (hWnd, uCmd) // 返回给定窗相关(uCmd)的窗口 uCmd -> MACRO.GW_xxx
 * CWnd.GetClassName (hWnd) // 获取窗口类名
-* CWnd.SetWindowText (hWnd) // 设置窗口标题
+* CWnd.SetWindowText (hWnd) // 设置窗口标题m
 * CWnd.GetWindowText (hWnd) // 获取窗口标题
 * CWnd.SendMessage(hWnd, Msg, wParam, lParam) // 发送消息
 * CWnd.GetDlgCtrlID(hWnd) // 根据窗口句柄 获取控件ID
