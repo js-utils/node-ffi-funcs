@@ -14,9 +14,11 @@ describe('CWnd TEST', function () {
     console.log(22, CWnd.SetForegroundApp(runningApp))
     setTimeout(() => {
       console.log('continue ...')
+      // 复制文字到粘贴板
+      console.log(CWnd.PasteboardCopyString("hello world"))
       // 粘贴
-      CWnd.PostEventKey(CWnd.MACRO.KEY_CODE_V, CWnd.MACRO.FLAG_MASK_COMMAND)
-      CWnd.PostEventKey(CWnd.MACRO.KEY_CODE_RETURN)
+      console.log(CWnd.PostEventKey(CWnd.MACRO.KEY_CODE_V, CWnd.MACRO.FLAG_MASK_COMMAND))
+      console.log(CWnd.PostEventKey(CWnd.MACRO.KEY_CODE_RETURN))
     }, 3000)
   })
 })
