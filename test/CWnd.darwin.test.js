@@ -12,5 +12,11 @@ describe('CWnd TEST', function () {
     let runningApp = CWnd.GetRunningAppWithName("风驰万里1", "Aliworkbench")
     console.log(11, runningApp)
     console.log(22, CWnd.SetForegroundApp(runningApp))
+    setTimeout(() => {
+      console.log('continue ...')
+      // 粘贴
+      CWnd.PostEventKey(CWnd.MACRO.KEY_CODE_V, CWnd.MACRO.FLAG_MASK_COMMAND)
+      CWnd.PostEventKey(CWnd.MACRO.KEY_CODE_RETURN)
+    }, 3000)
   })
 })
