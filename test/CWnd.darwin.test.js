@@ -7,11 +7,13 @@ describe('CWnd TEST', function () {
     console.log('string:', CWnd.testString("1"))
     console.log('string:', CWnd.AllWindowInfo())
     console.log('.......')
-    console.log(CWnd.GetWindowWithWinName("风驰万里1", "Aliworkbench"))
+    let win = CWnd.GetWindowWithName("风驰万里1", "Aliworkbench")
+    console.log('win:', win)
+    console.log('title：', CWnd.GetWindowTitle(win));
   })
   // GetRunningAppWithOwnerPid
   // it('static GetRunningAppWithName', async function() {
-  //   let ownerPid = CWnd.GetOwnerPidWithWinName("风驰万里1", "Aliworkbench")
+  //   let ownerPid = CWnd.GetOwnerPidWithName("风驰万里1", "Aliworkbench")
   //   if (ownerPid) {
   //     let runningApp = CWnd.GetRunningAppWithOwnerPid(ownerPid)
   //     console.log(11, runningApp)
