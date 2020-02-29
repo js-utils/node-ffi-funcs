@@ -120,6 +120,13 @@ describe('CWnd TEST', function () {
     let rect = CWnd.GetWindowRect(hWnd)
     expect(!!rect).to.be.ok
   })
+  // C_HWNDToBmpClipboard
+  it('static C_HWNDToBmpClipboard', async function() {
+    let hWnd = CWnd.FindWindow("Shell_TrayWnd", null)
+    CWnd.C_HWNDToBmpClipboard(hWnd)
+    let hBitmap = CWnd.GetClipboardData(CWnd.MACRO.CF_BITMAP)
+    expect(!!hBitmap).to.be.ok
+  })
   // C_HWndToBmpFile
   it('static C_HWndToBmpFile', async function() {
     let hWnd = CWnd.FindWindow("Shell_TrayWnd", null)

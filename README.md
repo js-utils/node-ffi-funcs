@@ -10,8 +10,8 @@
 * CWnd.GetParent (hWnd) // 返回给定子窗口的父窗口
 * CWnd.GetWindow (hWnd, uCmd) // 返回给定窗相关(uCmd)的窗口 uCmd -> MACRO.GW_xxx
 * CWnd.GetClassName (hWnd) // 获取窗口类名
-* CWnd.SetWindowText (hWnd) // 设置窗口标题m
-* CWnd.GetWindowText (hWnd) // 获取窗口标题
+* CWnd.SetWindowText (hWnd) // 设置窗口标题
+* CWnd.GectWindowText (hWnd) // 获取窗口标题
 * CWnd.SendMessage(hWnd, Msg, wParam, lParam) // 发送消息
 * CWnd.GetDlgCtrlID(hWnd) // 根据窗口句柄 获取控件ID
 * CWnd.GetDlgItem(hWnd, nIDDlgItem) // 根根据父窗口句柄 和 控件ID 获取控件句柄
@@ -26,6 +26,9 @@
 * CWnd.C_FindWindow(hParent = null, hChild = null, shouldClassNameReg = null, shouldWindowNameReg = null) // 查找某个窗口 - 包括子孙
 * CWnd.C_FindSiblingPreviousWindow(hWnd, shouldClassNameReg = null, shouldWindowNameReg = null) // 上一个兄弟节点  可根据要查找的类名或标题 查找最近的一个
 * CWnd.C_FindSiblingNextWindow (hWnd, className = null, windowName = null) // 下一个兄弟节点  可根据要查找的类名或标题 查找最近的一个
+* CWnd.GetClipboardData (uFormat) // 从剪切板获取数据
+* CWnd.SetClipboardData (uFormat, hMem) // 向剪切板写入数据
+* CWnd.C_HWNDToBmpClipboard (hWnd) // 将句柄转换成图片写入剪切板中
 * C_HWndToBmpFile(hWnd) // 将窗口句柄转为bmp图片路径
 ### 其他（others）
 
