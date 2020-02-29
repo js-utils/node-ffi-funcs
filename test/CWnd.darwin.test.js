@@ -8,7 +8,11 @@ describe('CWnd TEST', function () {
     console.log('string:', CWnd.AllWindowInfo())
     console.log('.......')
     let win = CWnd.GetWindowWithName("风驰万里1", "Aliworkbench")
-    console.log('win:', win)
+    let ownerPid = CWnd.GetOwnerPidWithName("风驰万里1", 'Aliworkbench')
+    let app = CWnd.GetRunningAppWithOwnerPid(ownerPid)
+    let win2 = CWnd.GetFocusWindowWithOwnerPid(ownerPid)
+    let win3 = CWnd.GetFocusWindowWithOwnerPid(ownerPid)
+    console.log('win:', ownerPid, win, win2, win3, CWnd.GetWindowTitle(win), CWnd.GetWindowTitle(win2), CWnd.GetWindowTitle(win3))
     console.log('title：', CWnd.GetWindowTitle(win));
   })
   // GetRunningAppWithOwnerPid
