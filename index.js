@@ -1,4 +1,2 @@
-let CWnd =require('./lib/win32/CWnd')
-module.exports = {
-  CWnd
-}
+let platformLib = require('./lib/index')
+module.exports = platformLib
